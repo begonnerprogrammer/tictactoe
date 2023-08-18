@@ -28,18 +28,22 @@ let wins=[
 wins.forEach((e)=>{
 if((boxtext[e[0]].innerText=== boxtext[e[1]].innerText) && (boxtext[e[2]].innerText=== boxtext[e[1]].innerText) && boxtext[e[0]].innerText !==""){
     document.querySelector('.info').innerText=boxtext[e[0]].innerText+'Won';
+    
     isgameover=true;
     document.querySelector('.imgbox').getElementsByTagName('img')[0].style.width='200px';
+   
+
     // Line animation code
     document.querySelector('.line').style.width='20vw';
     document.querySelector('.line').style.transform=`translate(${e[3]}vw, ${e[4]}vw) rotate(${e[5]}deg)`;
-    
+    initialturn=changeturn();
+    alert(`Thanks for playing  ${initialturn}   Win`);
 }
 })
 }
 
-//Game Logic
-music.play();
+// Game Logic
+// music.play();
 let boxes=document.getElementsByClassName('box');
 Array.from(boxes).forEach((element)=>{
 let boxtext =element.querySelector('.boxtext');
@@ -52,11 +56,20 @@ element.addEventListener('click',()=>{
         if(!isgameover){
             document.getElementsByClassName('info')[0].innerText='Turn for'+initialturn;
         }
-       
+
 
     }
 })
 })
+
+
+
+
+
+
+
+
+
 
 
 //Reset Functionality
@@ -67,6 +80,7 @@ reset.addEventListener('click',()=>{
         element.innerText="";
      })
      initialturn='X';
+    
      isgameover=false;
      document.getElementsByClassName('info')[0].innerText='Turn for'+initialturn;
      document.querySelector('.imgbox').getElementsByTagName('img')[0].style.width='0px';
